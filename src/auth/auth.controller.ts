@@ -24,4 +24,9 @@ export class AuthController {
     async validateOtp(@Body() otpData: { email: string; otpValue: string }): Promise<boolean> {
         return this.authService.validateOtp(otpData.email, otpData.otpValue);
     }
+
+    @Post('forgot-password')
+    async forgotPassword(@Body() userData: { email: string, githubAccount: string}): Promise<boolean> {
+        return this.authService.forgotPassword(userData.email, userData.githubAccount);
+    }
 }
